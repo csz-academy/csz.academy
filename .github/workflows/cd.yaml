@@ -1,0 +1,25 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "5 0 * * 2"
+  workflow_dispatch:
+
+jobs:
+  github-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
+          restore-keys: ${{ runner.os }}-gems-
+
+      - uses: helaili/jekyll-action@2.1.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pre_build_commands: "bundle update ffi"
