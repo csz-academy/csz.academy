@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+{% assign member=page %}
+
+{% if member.display_name %}
+    <h1>{{ member.display_name }}</h1>
+{% else %}
+    <h1>{{ member.acronym }}</h1>
+{% endif %}
+
+<p><b>Acronym: </b>{{ page.acronym }}</p>
+<b>Roles: </b>
+<ul>
+{% assign roles = member.roles | sort %}
+{% for role in roles %}
+    <li>{{ role }}</li>
+{% endfor %}
+</ul>
+
+{{ content }}
+
+<h2>Posts</h2>
+
+<ul>
+    {% assign filtered_posts = site.posts | where_exp: 'post', "post.authors contains page.acronym" %}
+    {% for post in filtered_posts %}
+      <li>[{{ post.date | date_to_string }}] <a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+</ul>

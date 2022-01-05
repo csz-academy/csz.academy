@@ -19,10 +19,10 @@ layout: default
       {%- endif -%}
       {%- if page.authors -%}
         • {% for author_shorthand in page.authors %}
-            {% assign author = site.data.authors[author_shorthand] %}
+            {% assign author = site.members | where: 'acronym', author_shorthand | first %}
             {%- if author -%}
             <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <span class="p-author h-card" itemprop="name">{{ author.display_name }}</span>
+                <span class="p-author h-card" itemprop="name"><a href="{{ author.url }}">{{ author.display_name }}</a></span>
             </span>
             {%- if forloop.last == false %}, {% endif -%}
             {%- endif -%}
