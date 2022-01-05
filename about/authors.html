@@ -23,12 +23,12 @@ layout: default
                 <td>{{ author.name }}</td>
             {% endif %}
             {% if author.github %}
-                <td><a href="https://github.com/{{ author.github }}">{{ author.github }}</a></td>
+                <td><a href="https://github.com/{{ author.github | uri_escape }}">{{ author.github }}</a></td>
             {% else %}
                 <td></td>
             {% endif %}
             {% if author.web %}
-                <td><a href="{{ author.web }}">{{ author.web }}</a></td>
+                <td><a href="{{ author.web | uri_escape }}">{{ author.web }}</a></td>
             {% else %}
                 <td></td>
             {% endif %}
