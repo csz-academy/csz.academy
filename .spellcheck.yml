@@ -8,6 +8,13 @@ matrix:
       - .wordlist.txt
   pipeline:
     - pyspelling.filters.markdown:
+    - pyspelling.filters.html:
+        comments: false
+        attributes:
+          - title
+          - alt
+        ignores:
+          - :matches(code, pre)
   sources:
     - '**/*.md'
     - '**/*.markdown'
@@ -26,3 +33,9 @@ matrix:
   expect_match: false
   pipeline:
     - pyspelling.filters.html:
+        comments: false
+        attributes:
+          - title
+          - alt
+        ignores:
+          - :matches(code, pre)
