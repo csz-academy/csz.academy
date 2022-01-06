@@ -27,3 +27,4 @@ platforms :mingw, :x64_mingw, :mswin do
 end
 
 gem "webrick", "~> 1.7"
+gem "html-proofer"
