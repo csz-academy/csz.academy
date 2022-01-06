@@ -28,15 +28,6 @@ jobs:
           ruby-version: 3.0.3
           bundler-cache: true
       
-      - name: Setup Rubygems, Bundler, jekyll
-        env:
-          NOKOGIRI_USE_SYSTEM_LIBRARIES: true
-        run: | 
-          gem update --system --no-document
-          gem update bundler --no-document
-          gem install jekyll bundler
-          bundle install
-      
       - name: Build jekyll website with drafts
         run: bundle exec jekyll build
       
