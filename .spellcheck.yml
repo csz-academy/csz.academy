@@ -7,7 +7,7 @@ matrix:
     wordlists:
       - .wordlist.txt
   pipeline:
-    - pyspelling.filters.markdown
+    - pyspelling.filters.markdown:
   sources:
     - '**/*.md'
     - '**/*.markdown'
@@ -23,4 +23,4 @@ matrix:
     wordlists:
       - .wordlist.txt
   pipeline:
-    - pyspelling.filters.html
+    - pyspelling.filters.html:
