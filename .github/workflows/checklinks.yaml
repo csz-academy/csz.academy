@@ -29,6 +29,8 @@ jobs:
           bundler-cache: true
       
       - name: Setup Rubygems, Bundler, jekyll
+        env:
+          NOKOGIRI_USE_SYSTEM_LIBRARIES: true
         run: | 
           gem update --system --no-document
           gem update bundler --no-document
@@ -36,7 +38,7 @@ jobs:
           bundle install
       
       - name: Build jekyll website with drafts
-        run: bundle exec jekyll build --drafts
+        run: bundle exec jekyll build
       
       - name: Check for broken links
         run: |
