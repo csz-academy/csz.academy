@@ -2,7 +2,7 @@
 type: member
 acronym: dwl
 display_name: diewellenlaenge
-roles: ["reverse guy"]
+roles: ["reversing guy"]
 github: diewellenlaenge
 web: https://csz.academy
 ---
