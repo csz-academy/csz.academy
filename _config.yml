@@ -36,6 +36,7 @@ plugins:
 
 include:
   - "_pages"
+  - "CNAME"
 
 collections:
   members:
@@ -59,9 +60,6 @@ defaults:
 header_pages:
   - _pages/about.md
   - _pages/members.html
-
-include:
-  - "CNAME"
 
 keep_files:
   - "CNAME"
