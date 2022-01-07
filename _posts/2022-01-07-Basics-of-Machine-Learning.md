@@ -18,7 +18,7 @@ For many people a neuronal network is magic. If you never learnt what happens be
 A neuronal Network, as the name already suggests, is a network of mutliple neurons.
 
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Neural_network.svg/1200px-Neural_network.svg.png" width="600">
+<img src="../assets/1200px-Neural_network.svg.png" width="600">
 
 You give a input into it and through the interaction of the different neurons the result is formed
 
@@ -33,7 +33,7 @@ The last type of neurons are the yellow one. They are at the end of the network.
 
 All 3 types of the network can be descriped through one model
 
-<img src="https://miro.medium.com/max/428/1*O7YSSqlOdQuNgMrH7J_3dg.png" width="600">
+<img src="../assets/1*O7YSSqlOdQuNgMrH7J_3dg.png" width="600">
 
 A neuron has multiple inputs. The inputs are the outputs of all neurons in the previous collum.
 These inputs get weights. For example if a input is 0.6 and the weight is 0.1 we take 0.6 * 0.1 and then we have the "real" input. Every input has its own weight. All of the inputs multiplied with the weigth are added together. This sum is now put into a function. The function determines how much output is generated for the given sum. Often the function looks like this:
@@ -46,7 +46,7 @@ If we have a description of the arrangement of the neurons and a list of all wei
 The structure of a network impacts its perfomance but the best variable to shape it are the weights. If we get the right weights its should be perfect. Obviously getting good weights is hard. I know i said this is without math but we need a little bit. A neuronal network is like a function with millions of parameters(weights) which produces a deterministic result. We can imagen this like a 3D map. 
 
 
-<img src="https://bdtechtalks.com/wp-content/uploads/2020/04/gradient-descent-local-minima.png" width="600">
+<img src="../assets/gradient-descent-local-minima.png" width="600">
 
 The lower we get the better our network performs. Finding the lowest point overall (Global Minima) is at the moment impossible. We take a other approach. We start at a random point somewhere. So we just use random weights. Luckily we have a way to find the way which leads us from our point. This is called negative gradiant. If you are intereseted in math you can research this on your own. <br>
 Now lets start learning. We guess some weights and start throwing inputs into the network. We compare the result of the network with the right results. Then we use the negative gradiant and adjust the weights with these metrics. This process is repeated thousand or even millions of times until we find a local minima. If we reach it we cant get out and have to take a look how our network performs. If the accurecy of the network is enough we are finished. When the result are not good enough we have to start again with other starting weights and let the network learn.
