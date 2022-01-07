@@ -1,10 +1,16 @@
-# The Basics of Machine Learning without math
+---
+layout: post
+title:  "The Basics of Machine Learning without math"
+date:   2022-01-07 19:58:49 +0100
+categories: machine learning
+---
+
 
 ## Table of content
 1. How is a neuronal network structured
 2. What is a neuron
 3. What is Backpropagation
-4. How can this be used in practice
+4. How can we use this knowledge in practice
 
 
 ## How is a neuronal network structured
@@ -45,3 +51,8 @@ The structure of a network impacts its perfomance but the best variable to shape
 The lower we get the better our network performs. Finding the lowest point overall (Global Minima) is at the moment impossible. We take a other approach. We start at a random point somewhere. So we just use random weights. Luckily we have a way to find the way which leads us from our point. This is called negative gradiant. If you are intereseted in math you can research this on your own. <br>
 Now lets start learning. We guess some weights and start throwing inputs into the network. We compare the result of the network with the right results. Then we use the negative gradiant and adjust the weights with these metrics. This process is repeated thousand or even millions of times until we find a local minima. If we reach it we cant get out and have to take a look how our network performs. If the accurecy of the network is enough we are finished. When the result are not good enough we have to start again with other starting weights and let the network learn.
 
+## How can we use this knowledge in practice
+
+A good and easy way to start is to use pytorch 
+https://pytorch.org/
+This library allows us to build and train a network with nearly zero prior knowledge. So what are you waiting for?
