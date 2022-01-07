@@ -6,7 +6,7 @@ categories: machine learning
 ---
 
 
-## Table of content
+## Table of Contents
 1. How is a neuronal network structured
 2. What is a neuron
 3. What is Backpropagation
@@ -14,7 +14,7 @@ categories: machine learning
 
 
 ## How is a neuronal network structured
-For many people a neuronal network is magic. If you never learnt what happens behind the scenes it looks like you just throw things in and at the end it can solve the problem. <br>
+For many people a neuronal network is magic. If you never learnt what happens behind the scenes it looks like you just throw things in and eventually it can solve a problem <br>
 A neuronal Network, as the name already suggests, is a network of mutliple neurons.
 
 
@@ -22,7 +22,7 @@ A neuronal Network, as the name already suggests, is a network of mutliple neuro
 
 You give a input into it and through the interaction of the different neurons the result is formed
 
-## What is a neuron
+## What is a Neuron
 
 As you could see in the image above there are 3 types of neurons.
 The green ones are input Neurons. The just have connections to their right and no other connections. These are used to input data into the neuronal network. <br>
@@ -51,7 +51,7 @@ The structure of a network impacts its perfomance but the best variable to shape
 The lower we get the better our network performs. Finding the lowest point overall (Global Minima) is at the moment impossible. We take a other approach. We start at a random point somewhere. So we just use random weights. Luckily we have a way to find the way which leads us from our point. This is called negative gradiant. If you are intereseted in math you can research this on your own. <br>
 Now lets start learning. We guess some weights and start throwing inputs into the network. We compare the result of the network with the right results. Then we use the negative gradiant and adjust the weights with these metrics. This process is repeated thousand or even millions of times until we find a local minima. If we reach it we cant get out and have to take a look how our network performs. If the accurecy of the network is enough we are finished. When the result are not good enough we have to start again with other starting weights and let the network learn.
 
-## How can we use this knowledge in practice
+## How can we use this Knowledge in Practice
 
 A good and easy way to start is to use pytorch 
 https://pytorch.org/
