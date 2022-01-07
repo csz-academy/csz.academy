@@ -26,5 +26,5 @@ platforms :mingw, :x64_mingw, :mswin do
   gem "wdm", "~> 0.1.1"
 end
 
+
 gem "webrick", "~> 1.7"
-gem "html-proofer"
