@@ -43,7 +43,8 @@ https://miro.medium.com/max/428/1*O7YSSqlOdQuNgMrH7J_3dg.png<br><br>
 A neuron has multiple inputs. The inputs are the outputs of all neurons in the previous collum.
 These inputs get weights. For example if a input is 0.6 and the weight is 0.1 we take 0.6 * 0.1 and then we have the "real" input. Every input has its own weight. All of the inputs multiplied with the weigth are added together. This sum is now put into a function. The function determines how much output is generated for the given sum. Often the function looks like this:
 
-
+<img src="../assets/1*oePAhrm74RNnNEolprmTaQ.png" width="600"><br>
+https://miro.medium.com/max/357/1*oePAhrm74RNnNEolprmTaQ.png<br><br>
 The output of this function (in this case RELU) is the output of the neuron and therefore the input for the next collum of neurons.<br>
 If we have a description of the arrangement of the neurons and a list of all weights we can reproduce the network over and over with the same outputs for the same inputs. And these two informations are the core of a neuronal network. How the Neurons are arrenged and what the weights are. 
 
@@ -61,3 +62,5 @@ Now lets start learning. We guess some weights and start throwing inputs into th
 A good and easy way to start is to use pytorch 
 https://pytorch.org/
 This library allows us to build and train a network with nearly zero prior knowledge. So what are you waiting for?
+
+<img src="../assets/have-a-good-day-cats.gif">
