@@ -1,0 +1,1 @@
+FROM mcr.microsoft.com/vscode/devcontainers/ruby:3.0
