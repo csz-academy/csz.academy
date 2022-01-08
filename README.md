@@ -42,18 +42,15 @@ Every post is a single unit which contains all markup- and asset files.
 At a minimum you create the following structure
 ```
 _posts/
-└── <<Year>>/
-	└── <<Month>>/
-		└── <<Day>>/
-			└── <<post-title>>/
-				└── <<Year>>-<<Month>>-<<Day>>-<<post-title>>.MARKUP
+└── <<Year>>-<<Month>>-<<Day>>-<<post-title>>/
+    └── <<Year>>-<<Month>>-<<Day>>-<<post-title>>.MARKUP
 ```
 
 #### Using Assets
 
 Drop the assets next to your post:
 ```
-<<post-title>>/
+<<Year>>-<<Month>>-<<Day>>-<<post-title>>/
 ├── archive.zip
 ├── image.png
 └── <<Year>>-<<Month>>-<<Day>>-<<post-title>>.MARKUP
