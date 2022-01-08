@@ -34,3 +34,32 @@ web: <<Your HomePage>>
 
 <<Your Profile Page Content>>
 ```
+
+## Directory Structure
+
+### Posts
+Every post is a single unit which contains all markup- and asset files.
+At a minimum you create the following structure
+```
+_posts/
+└── <<Year>>/
+	└── <<Month>>/
+		└── <<Day>>/
+			└── <<post-title>>/
+				└── <<Year>>-<<Month>>-<<Day>>-<<post-title>>.MARKUP
+```
+
+#### Using Assets
+
+Drop the assets next to your post:
+```
+<<post-title>>/
+├── archive.zip
+├── image.png
+└── <<Year>>-<<Month>>-<<Day>>-<<post-title>>.MARKUP
+```
+And you can link them in your post like this:
+~~~
+![My Image](image.png)
+[Download Archive here](archive.zip)
+~~~

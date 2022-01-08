@@ -25,6 +25,8 @@ description: >- # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://csz.academy" # the base hostname & protocol for your site, e.g. http://example.com
 
+permalink: /:year/:month/:day/:title/
+
 # Build settings
 theme: minima
 
@@ -54,10 +56,6 @@ defaults:
       path: ""
     values:
       layout: "default"
-  - scope:
-      path: "_pages"
-    values:
-      layout: "page"
 
 header_pages:
   - _pages/about.md
