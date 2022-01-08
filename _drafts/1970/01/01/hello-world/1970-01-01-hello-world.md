@@ -10,3 +10,5 @@ Hello, World!
 This is an example page that won't be published. Its only purpose is testing layouts. 
 
 Run Jekyll with `--drafts` switch to build it.
+
+[this is an asset](hello-world.txt)
