@@ -18,8 +18,12 @@ For many people a neuronal network is magic. If you never learnt what happens be
 A neuronal Network, as the name already suggests, is a network of mutliple neurons.
 
 
-<img src="1200px-Neural_network.svg.png" width="600"><br>
-https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Neural_network.svg/1200px-Neural_network.svg.png <br><br>
+<figure>
+  <img src="1200px-Neural_network.svg.png" width="600" alt="Simplified representation of a Neural Network with two green input nodes, five blue intermediate nodes and one yellow output node." />
+  <figcaption>
+    A simplified representation of a neural network with two layers.
+    <a href="https://commons.wikimedia.org/wiki/File:Neural_network.svg">(by Dake, Mysid. CC-BY 1.0)</a></figcaption>
+</figure>
 
 
 
