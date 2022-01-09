@@ -35,6 +35,20 @@ web: <<Your HomePage>>
 <<Your Profile Page Content>>
 ```
 
+## Markup Features
+
+You are free to use LaTeX within your Markup files. Support for rendering comes from [https://www.mathjax.org/].
+For a better integration we're making this feature opt-in. Add the follwing property to your post front-matter.
+```md
+---
+features: [ "latex" ]
+---
+```
+Now you can use Latex Notation in your post like this:
+```
+$$ \LaTeX $$
+```
+
 ## Directory Structure
 
 ### Posts
