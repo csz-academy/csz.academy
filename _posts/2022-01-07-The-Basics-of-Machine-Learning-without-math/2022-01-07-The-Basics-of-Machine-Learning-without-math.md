@@ -29,7 +29,7 @@ A neuronal Network, as the name already suggests, is a network of mutliple neuro
 
 
 
-You give a input into it and through the interaction of the different neurons the result is formed
+You give a input into it and through the interaction of the different neurons the result is formed.
 
 ## What is a Neuron
 
