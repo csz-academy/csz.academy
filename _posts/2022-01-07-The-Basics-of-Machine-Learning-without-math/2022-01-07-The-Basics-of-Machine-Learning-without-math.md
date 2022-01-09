@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "The Basics of Machine Learning without math"
+title:  "The Basics of Machine Learning without Math"
 date:   2022-01-07 19:58:49 +0100
 categories: machine learning
 ---
