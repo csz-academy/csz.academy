@@ -14,7 +14,8 @@ categories: machine learning
 
 
 ## How is a neuronal network structured
-For many people a neuronal network is magic. If you never learnt what happens behind the scenes it looks like you just throw things in and eventually it can solve a problem <br>
+For many people a neuronal network is magic. If you never learnt what happens behind the scenes it looks like you just throw things in and eventually it can solve a problem.
+
 A neuronal Network, as the name already suggests, is a network of mutliple neurons.
 
 
