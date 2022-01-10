@@ -46,7 +46,7 @@ features: [ "latex" ]
 ```
 Now you can use Latex Notation in your post like this:
 ```
-$$ \LaTeX $$
+\[ \LaTeX \]
 ```
 
 ## Directory Structure
