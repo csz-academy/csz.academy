@@ -14,7 +14,7 @@ After several hours of trial and error I have figured out how to leverage the Sp
 configuration and out-of-the-box deserializing in a type-safe matter. 
 
 We are going to build a testable skeleton with Kafka Listeners, try deserializing messages, accessing 
-headers and I will show you some common pitfalls. The final code can be found in my [spring-dojo repository on GitHub](https://github.com/tobi6112/spring-dojo/tree/main/spring-boot-kafka-example).
+headers and I will show you some common pitfalls. The final code can be found in my [java-dojo repository on GitHub](https://github.com/tobi6112/java-dojo/tree/main/spring-boot-kafka-example).
 
 # Prerequisites
 
@@ -39,6 +39,12 @@ the following dependencies:
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-test</artifactId>
         <scope>test</scope>
+        <exclusions>
+            <exclusion>
+                <groupId>org.junit.vintage</groupId>
+                <artifactId>junit-vintage-engine</artifactId>
+            </exclusion>
+        </exclusions>
     </dependency>
     <dependency>
         <groupId>org.springframework.kafka</groupId>
@@ -189,5 +195,58 @@ class KafkaListenersTest {
 }
 ```
 
-And that's our skeleton for the next steps. 
+Running the tests will give you the following Output:
+```
+[ERROR] Tests run: 2, Failures: 0, Errors: 1, Skipped: 0
+```
+Wow - one test is already passing and we didn't do anything - so it shouldn't be so hard to make the second one pass... Right?
 
+However, this will be our skeleton for the next steps. 
+
+# JSON Deserialization
+
+Looking at the output from the failing test, we see that the JSON Deserializion is not working properly. The Exception message is:
+```
+java.lang.ClassCastException: class java.lang.String cannot be cast to class comgithub.tobi6112.springbootkafkaexample.User
+```
+
+Well, this should be an easy fix. Just add a JSON Deserializer that is shipped already by Spring Kafka as stated in the docs. Just add the following configuration:
+
+```properties
+spring.kafka.consumer.value-deserializer=org.springframework.kafka.support.serializer.JsonDeserializer
+```
+
+Running the failing test again, we see it is still failing, but with another exception - so our configuration had some inpact - Yay! This time the Exception is:
+
+```
+Caused by: java.lang.IllegalStateException: No type information in headers and no default type provided
+```
+
+Hint: You might have noticed that your listener is trapped inside a endless loop and will propably flood your stdout. We will adress that later on in [Error Handling](#error-handling).
+
+.... TODO
+
+
+
+# Error Handling
+
+I won't deep-dive into this topic here, instead I want to encourage you to take a look at the excellent Blog Post by [Confluent](https://www.confluent.io/de-de/blog/spring-kafka-can-your-kafka-consumers-handle-a-poison-pill/) 
+which explains the difficulties of handling Exceptions within Kafka Consumers and also looking 
+at the Sprinng Documentation [Using ErrorHandlingDeserializer](https://docs.spring.io/spring-kafka/reference/html/#error-handling-deserializer).
+
+However, the following configuration applies for this example project focussing on deserialization 
+issues and no DLT's.
+```properties
+spring.kafka.consumer.key-deserializer=org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+spring.kafka.consumer.value-deserializer=org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+spring.kafka.consumer.properties.[spring.deserializer.value.delegate.class]=org.springframework.kafka.support.serializer.JsonDeserializer
+spring.kafka.consumer.properties.[spring.deserializer.key.delegate.class]=org.apache.kafka.common.serialization.StringDeserializer
+```
+
+Also we will define an Error Handler Bean:
+```java
+@Bean
+public CommonLoggingErrorHandler errorHandler() {
+  return new CommonLoggingErrorHandler();
+}
+```
