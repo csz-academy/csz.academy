@@ -11,7 +11,7 @@ However, nearly every tutorial and guide I found on the web felt like a cumberso
 to the usual magic in Spring Boot.
 
 After several hours of trial and error I have figured out how to leverage the Spring Boot auto 
-configuration and out-of-the-box deserializing in a type-safe matter. 
+configuration and out-of-the-box deserializing in a type-safe manner. 
 
 We are going to build a testable skeleton with Kafka Listeners, try deserializing messages, accessing 
 headers and I will show you some common pitfalls. The final code can be found in my [java-dojo repository on GitHub](https://github.com/tobi6112/java-dojo/tree/main/spring-boot-kafka-example).
@@ -203,7 +203,13 @@ Wow - one test is already passing and we didn't do anything - so it shouldn't be
 
 However, this will be our skeleton for the next steps. 
 
-# JSON Deserialization
+# Leveraging Spring Boot Autoconfig
+
+... TODO
+
+# Apply JSON Deserialization
+
+## The Cumbersome Way
 
 Looking at the output from the failing test, we see that the JSON Deserializion is not working properly. The Exception message is:
 ```
@@ -222,11 +228,127 @@ Running the failing test again, we see it is still failing, but with another exc
 Caused by: java.lang.IllegalStateException: No type information in headers and no default type provided
 ```
 
-Hint: You might have noticed that your listener is trapped inside a endless loop and will propably flood your stdout. We will adress that later on in [Error Handling](#error-handling).
+Hint: You might have noticed that your listener is trapped inside a endless loop and will propably flood your stdout. I will adress that later on in [Error Handling](#error-handling).
 
-.... TODO
+What this exeception is telling you is, that the provided JsonDeserializer does not know the type to deserialize to and is using the Kafka. The JsonDeserializer inspects the record Headers and searches for a `__TypeId__` Header in which a type identifier is located, and will use this header to determine the deserialization type by resolving it from a mapping configration.
+
+So in order to resolve this exception we will need to add the type header to the produced record - and therefore need to modifiy the test case. We will choose `user` as the type identifier.
+The test will no look like the following
+```java
+@Test
+void userListener() {
+// Given
+var user = """
+    {
+        "name": "Carl",
+        "birthday": "2000-01-01",
+        "hobbies": [
+        "football",
+        "coding"
+        ]
+    }
+    """;
+var recordToSend = new ProducerRecord<Object, Object>("user", user);
+recordToSend.headers().add("__TypeId__", "user".getBytes());
+
+// When
+kafkaTemplate.send(recordToSend);
+
+// Then
+var expectedUser = new User("Carl",
+    LocalDate.of(2000, 1, 1),
+    Set.of("football", "coding"));
+
+await().atMost(15, TimeUnit.SECONDS).until(() -> kafkaListeners.users.size() > 0);
+assertThat(kafkaListeners.users).containsExactlyInAnyOrder(expectedUser);
+}
+```
+
+Next we need to define the type mapping to tell the JSONDeserializer in which type it needs to be deserialized. This can be done by adding the following configuration:
+```properties
+spring.kafka.consumer.properties.[spring.json.type.mapping]=user:com.github.tobi6112.springbootkafkaexample.User
+```
+
+If you run the test case again, you will see it will succeed. Nice. That was kinda easy. Let's run the other test again, to verify it too. Uh... Oh... It fails. We had the exception already, just add a type header and a type Mapping to String and it should work. We choose `user-id` as type identifier and map it to `java.lang.String`. That should work now... Well: it doesn't.
+```
+Caused by: com.fasterxml.jackson.core.JsonParseException: Unexpected character ('b' (code 98)) in numeric value: Exponent indicator not followed by a digit
+```
+Remember that we're publishing plain string values to the topic, and we are now trying to deserialize it with a JsonDeserializer which expects a JSON value. So we need to tell the kafka listener for the topic `user-id` to use a StringDeserializer. We can do this by two ways. Either we provide a new [KafkaListenerContainerFactory](https://docs.spring.io/spring-kafka/api/org/springframework/kafka/config/KafkaListenerContainerFactory.html) Bean and refernce its qualifier in the `@KafkaListener` annotation. 
+The over possiblity we have is directly setting these properties in the `@KafkaListener` annotation.
+
+### Using the ConsumerFactory
+
+First you need to keep in mind, that you will need to define tw ContainerFactories. One for the JSON Deserialization and one for the String deserialzion. We will define the ContainerFactory for JSON Deserialization as the Primary bean so it will be automatically picked up by Spring Boot when instantiating a new KafkaListener.
+```java
+@Bean(name = "stringContainerFactory")
+public ConcurrentKafkaListenerContainerFactory<Object, Object> kafkaStringConsumerFactory(
+    ConcurrentKafkaListenerContainerFactoryConfigurer configurer,
+    ObjectProvider<ConsumerFactory<Object, Object>> kafkaConsumerFactory,
+    KafkaProperties properties
+) {
+    ConcurrentKafkaListenerContainerFactory<Object, Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    configurer.configure(factory, kafkaConsumerFactory
+        .getIfAvailable(() -> {
+            var consumerFactory = new DefaultKafkaConsumerFactory<>(properties.buildConsumerProperties());
+
+            consumerFactory.setValueDeserializer(new ParseStringDeserializer<>());
+
+            return consumerFactory;
+        }));
+    return factory;
+}
+
+@Primary
+@Bean(name = "defaultContainerFactory")
+public ConcurrentKafkaListenerContainerFactory<Object, Object> kafkaDefaultConsumerFactory(
+    ConcurrentKafkaListenerContainerFactoryConfigurer configurer,
+    ObjectProvider<ConsumerFactory<Object, Object>> kafkaConsumerFactory,
+    KafkaProperties properties
+) {
+    ConcurrentKafkaListenerContainerFactory<Object, Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    configurer.configure(factory, kafkaConsumerFactory
+        .getIfAvailable(() -> new DefaultKafkaConsumerFactory<>(properties.buildConsumerProperties())));
+    return factory;
+}
+```
+
+And then configure the KafkaListener to use the provided ContainerFactory.
+```java
+@KafkaListener(topics = "user-id", containerFactory = "stringContainerFactory") 
+public void userIdListener(ConsumerRecord<String, String> record) {
+    log.info("Received a Message in user-id topic: {}", record);
+    this.userIds.add(record.value());
+}
+```
+
+At least now you should be questioning this approach, there must be a better way.
+
+### Using Properties in Annotation
+
+We will just add the property to the annotation. Then this consumer will use the StringDeserializer to deserialize the message content. 
+```java
+@KafkaListener(topics = "user-id", properties = {
+    "spring.deserializer.value.delegate.class=org.apache.kafka.common.serialization.StringDeserializer"
+}) 
+public void userIdListener(ConsumerRecord<String, String> record) {
+    log.info("Received a Message in user-id topic: {}", record);
+    this.userIds.add(record.value());
+}
+```
+
+Well, know both tests are succeeding. 
+
+## The Smart Way
+
+I hope you didn't quit after reading the previous paragraph. If you are familar with Spring Boot you should notice, that there was a lot of manual work required to do a rather simple task. What if I tell you, that you can reduce the amount of code an configuration to a bare minimum and let Spring Boot do all the work for you?
 
 
+// TODO
+
+
+# Kafka Record vs. Message
+
+// TODO: Emphasize the issues with kafka records, like type sneaking and missing validation
 
 # Error Handling
 
