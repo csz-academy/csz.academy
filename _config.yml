@@ -39,8 +39,12 @@ minima:
   social_links:
     github: csz-academy
 
+markdown: kramdown
 plugins:
   - jekyll-feed
+
+kramdown:
+  math_engine: katex
 
 include:
   - "_pages"
