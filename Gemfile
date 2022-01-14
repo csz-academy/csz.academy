@@ -12,6 +12,8 @@ source "https://rubygems.org"
 gem "minima", git: "https://github.com/jekyll/minima"
 
 gem "github-pages"
+gem "kramdown-math-katex", "~> 1.0.1"
+gem "execjs", "~> 2.7"
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
 # and associated library.
@@ -20,7 +22,7 @@ platforms :mingw, :x64_mingw, :mswin, :jruby do
   gem "tzinfo-data"
 end
 
-platforms :mingw, :x64_mingw, :mswin do 
+platforms :mingw, :x64_mingw, :mswin do
   gem "wdm", "~> 0.1.1"
 end
 
