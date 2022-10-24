@@ -8,9 +8,20 @@ on:
     - cron: "5 0 * * 2"
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
-  github-pages:
+  build:
     runs-on: ubuntu-latest
+    name: Build
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -20,15 +31,34 @@ jobs:
           # Fetch all history for .GitInfo and .Lastmod
           fetch-depth: 0
 
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v2
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
 
       - name: Build
-        run: hugo --minify
+        run: hugo --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+        env:
+          HUGO_ENV: production
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/main' }}
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          path: ./public
+
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy
+    needs: build
+    if: ${{ github.ref == 'refs/heads/main' }}
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
