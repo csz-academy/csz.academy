@@ -130,7 +130,8 @@ A symmetrical crypto system is defined as a system where the same key that is us
 ##### Caesar cipher
 You most probably know this one, maybe by another name. The story goes that [Gaius Julius](https://en.wikipedia.org/wiki/Julius_Caesar) needed to come up with a means of securely getting military orders to his generals. And what he came up with is a solution as simple as smart, considering the resources he reasonably might've had at hand: he shifted the letters in the alphabet. The most commonly known representation of this is that of a rotating disk marked with two alphabets. This disk allows you to quickly shift the letters as needed.
 
-//PLACEHOLDER: image of Caesar cipher disk
+![image of a caesar cipher disk](./caesarCipher.png)
+<font size="2">Image created based on a template by [https://www.inf-schule.de](https://www.inf-schule.de), original work under CC BY-SA 4.0</font>
 
 The key in this case is the amount of letters you shift. Assuming that $\textsf{A}$ can be represented by the number $\textsf{0}$, $\textsf{B}$ by the number $\textsf{1}$ and so on (you can see where this is going), you can for example use a key of $\textsf{5}$ to tell the recipient of your message that you've replaced all $\textsf{A}$s ($\textsf{0}$) with $\textsf{F}$s ($\textsf{5}$), all $\textsf{B}$s with $\textsf{G}$s, etc...
 Side note: you'll see why we start counting at $\textsf{0}$ in the example below. It just makes life a little easier.
