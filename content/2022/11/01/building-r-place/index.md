@@ -286,3 +286,6 @@ and
     Server -) Client2: checkpoint: {image: 0xab1...}
 end
 ```
+
+## Stats
+<!-- TODO: Stats on how it went and stuff -->
