@@ -6,6 +6,7 @@ categories:
 - mathematics
 author:
 - fnord
+math: true
 ---
 # Cryptography
 ## Part I: History and Basics
