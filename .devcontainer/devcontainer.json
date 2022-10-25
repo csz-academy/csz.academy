@@ -5,7 +5,6 @@
     "extensions": [
         "yzhang.markdown-all-in-one",
         "adamvoss.vscode-languagetool",
-        "adamvoss.vscode-languagetool-en",
-        "sissel.shopify-liquid"   
+        "adamvoss.vscode-languagetool-en"
     ]
 }

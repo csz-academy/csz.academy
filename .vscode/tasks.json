@@ -2,13 +2,8 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "jekyll serve",
-            "command": "bundle exec jekyll serve",
-            "type": "shell"
-        },
-        {
-            "label": "jekyll build",
-            "command": "bundle exec jekyll build",
+            "label": "hugo serve",
+            "command": "hugo serve",
             "type": "shell"
         }
     ]
