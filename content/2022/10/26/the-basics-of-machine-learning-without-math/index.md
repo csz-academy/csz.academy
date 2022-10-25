@@ -36,14 +36,14 @@ As you could see in the image above there are 3 types of neurons:
 
 All 3 types of the network can be described through one model
 
-![Depiction of multiple layers containing different neurons](layers.png)
+{{< figure align=center src="layers.png" title="Depiction of multiple layers containing different neurons" >}}
 https://miro.medium.com/max/428/1*O7YSSqlOdQuNgMrH7J_3dg.png
 <!-- TODO: License? Reference the Author in a footnote? -->
 
 A neuron has multiple inputs. The inputs are the outputs of all neurons in the previous column.
 These inputs get weights. For example if a input is 0.6 and the weight is 0.1 we take 0.6 * 0.1 and then we have the "real" input. Every input has its own weight. All of the inputs multiplied with the weight are added together. This sum is now put into a function. The function determines how much output is generated for the given sum. Often the function looks like this:
 
-![](relu.png)
+{{< figure align=center src="relu.png" title="TODO: Figure caption" >}}
 <!-- TODO: Alt text -->
 
 https://miro.medium.com/max/357/1*oePAhrm74RNnNEolprmTaQ.png
@@ -55,7 +55,7 @@ If we have a description of the arrangement of the neurons and a list of all wei
 ## What is Backpropagation
 The structure of a network impacts its performance, but the best variable to shape it are the weights. If we get the right weights it should be perfect. Obviously getting good weights is hard. I know that I said this is without math, but we need a little bit. A neuronal network is like a function with millions of parameters(weights) which produces a deterministic result. We can imagine this like a 3D map.
 
-![Image showing an example of a gradient descent](gradient-descent-local-minima.png)
+{{< figure align=center src="gradient-descent-local-minima.png" title="An example of a gradient descent" >}}
 https://bdtechtalks.com/wp-content/uploads/2020/04/gradient-descent-local-minima.png
 <!-- TODO: License? Reference the Author in a footnote? -->
 
@@ -68,4 +68,4 @@ Now lets start learning. We guess some weights and start throwing inputs into th
 A good and easy way to start is to use pytorch: https://pytorch.org
 This library allows us to build and train a network with nearly zero prior knowledge. So what are you waiting for?
 
-![Have a nice day! :)](have-a-good-day-cat.gif)
+![Have a nice day! :)](have-a-good-day-cat.gif#center)
