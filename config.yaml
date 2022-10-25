@@ -1,6 +1,9 @@
 baseURL: "https://csz.academy"
 languageCode: "en-US"
 title: "csz.academy"
+description: >-
+  csz.academy - The online academy of eloquent tech professions
+
 theme: "PaperMod"
 
 enableInlineShortcodes: true
