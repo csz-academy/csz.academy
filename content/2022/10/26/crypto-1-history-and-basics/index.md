@@ -13,14 +13,6 @@ math: true
 Hi everyone, Fnord here.
 This post is the first in a small series on cryptography, written in collaboration with [CRTified](https://github.com/CRTified). For the first post, we'll mainly focus on the history of cryptography and set some basic ground rules. We'll also talk about what "crypto systems" are and take a look at a simple method of encrypting texts.
 
-## Table of Contents
-* History
-* Notation/Ground rules
-* What are crypto systems?
-  * Symmetric
-    * Caesar Cipher - a simple symmetric encryption
-  * Asymmetric
-
 ### History
 _Alt title: "what is cryptography anyways?"_
 Don't worry, I'll spare you the `n + 1`[st|nd|th] detailed reiteration of things you can find on [Wikipedia](https://en.wikipedia.org/wiki/Cryptography), but let's at least recap a few major points:
