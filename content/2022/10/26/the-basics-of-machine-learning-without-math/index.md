@@ -9,17 +9,20 @@ tags:
 - machine learning
 ---
 
-## How is a neuronal network structured
+## The Structure of a Neural Network
 For many people a neuronal network is magic. If you never learnt what happens behind the scenes it looks like you just throw things in and eventually it can solve a problem.
 
 A neuronal Network, as the name already suggests, is a network of multiple neurons.
 
-<figure>
-  <img src="1200px-Neural_network.svg.png" width="600" alt="Simplified representation of a Neural Network with two green input nodes, five blue intermediate nodes and one yellow output node." />
-  <figcaption>
-    A simplified representation of a neural network with two layers.
-    <a href="https://commons.wikimedia.org/wiki/File:Neural_network.svg">(by Dake, Mysid. CC-BY 1.0)</a></figcaption>
-</figure>
+
+{{<
+  figure
+  align=center
+  src="neural-network.png"
+  title="A simplified representation of a neural network with two layers."
+  alt="Simplified representation of a Neural Network with two green input nodes, five blue intermediate nodes and one yellow output node."
+>}}
+<!-- TODO: Source: <a href="https://commons.wikimedia.org/wiki/File:Neural_network.svg">(by Dake, Mysid. CC-BY 1.0)</a> -->
 
 You give a input into it and through the interaction of the different neurons the result is formed.
 
