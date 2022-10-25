@@ -1,7 +1,7 @@
 ---
 title: The Basics of Machine Learning without Math
 author: pt
-date: 2022-10-26
+date: 2022-10-25
 categories:
 - machine learning
 tags:
@@ -36,14 +36,15 @@ As you could see in the image above there are 3 types of neurons:
 
 All 3 types of the network can be described through one model
 
-<img src="1*O7YSSqlOdQuNgMrH7J_3dg.png" width="600">
+![Depiction of multiple layers containing different neurons](layers.png)
 https://miro.medium.com/max/428/1*O7YSSqlOdQuNgMrH7J_3dg.png
 <!-- TODO: License? Reference the Author in a footnote? -->
 
 A neuron has multiple inputs. The inputs are the outputs of all neurons in the previous column.
 These inputs get weights. For example if a input is 0.6 and the weight is 0.1 we take 0.6 * 0.1 and then we have the "real" input. Every input has its own weight. All of the inputs multiplied with the weight are added together. This sum is now put into a function. The function determines how much output is generated for the given sum. Often the function looks like this:
 
-<img src="1*oePAhrm74RNnNEolprmTaQ.png" width="600">
+![](relu.png)
+<!-- TODO: Alt text -->
 
 https://miro.medium.com/max/357/1*oePAhrm74RNnNEolprmTaQ.png
 <!-- TODO: License? Reference the Author in a footnote? -->
