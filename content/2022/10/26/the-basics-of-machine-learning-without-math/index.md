@@ -5,19 +5,10 @@ date:   2022-01-07 19:58:49 +0100
 categories: machine learning
 ---
 
-
-## Table of Contents
-1. How is a neuronal network structured
-2. What is a neuron
-3. What is Backpropagation
-4. How can we use this knowledge in practice
-
-
 ## How is a neuronal network structured
 For many people a neuronal network is magic. If you never learnt what happens behind the scenes it looks like you just throw things in and eventually it can solve a problem.
 
 A neuronal Network, as the name already suggests, is a network of mutliple neurons.
-
 
 <figure>
   <img src="1200px-Neural_network.svg.png" width="600" alt="Simplified representation of a Neural Network with two green input nodes, five blue intermediate nodes and one yellow output node." />
@@ -25,8 +16,6 @@ A neuronal Network, as the name already suggests, is a network of mutliple neuro
     A simplified representation of a neural network with two layers.
     <a href="https://commons.wikimedia.org/wiki/File:Neural_network.svg">(by Dake, Mysid. CC-BY 1.0)</a></figcaption>
 </figure>
-
-
 
 
 You give a input into it and through the interaction of the different neurons the result is formed.
@@ -51,10 +40,10 @@ These inputs get weights. For example if a input is 0.6 and the weight is 0.1 we
 <img src="1*oePAhrm74RNnNEolprmTaQ.png" width="600"><br>
 https://miro.medium.com/max/357/1*oePAhrm74RNnNEolprmTaQ.png<br><br>
 The output of this function (in this case RELU) is the output of the neuron and therefore the input for the next collum of neurons.<br>
-If we have a description of the arrangement of the neurons and a list of all weights we can reproduce the network over and over with the same outputs for the same inputs. And these two informations are the core of a neuronal network. How the Neurons are arrenged and what the weights are. 
+If we have a description of the arrangement of the neurons and a list of all weights we can reproduce the network over and over with the same outputs for the same inputs. And these two informations are the core of a neuronal network. How the Neurons are arrenged and what the weights are.
 
 ## What is Backpropagation
-The structure of a network impacts its perfomance but the best variable to shape it are the weights. If we get the right weights its should be perfect. Obviously getting good weights is hard. I know i said this is without math but we need a little bit. A neuronal network is like a function with millions of parameters(weights) which produces a deterministic result. We can imagen this like a 3D map. 
+The structure of a network impacts its perfomance but the best variable to shape it are the weights. If we get the right weights its should be perfect. Obviously getting good weights is hard. I know i said this is without math but we need a little bit. A neuronal network is like a function with millions of parameters(weights) which produces a deterministic result. We can imagen this like a 3D map.
 
 
 <img src="gradient-descent-local-minima.png" width="600"><br>
@@ -64,8 +53,7 @@ Now lets start learning. We guess some weights and start throwing inputs into th
 
 ## How can we use this Knowledge in Practice
 
-A good and easy way to start is to use pytorch 
-https://pytorch.org/
+A good and easy way to start is to use pytorch: https://pytorch.org
 This library allows us to build and train a network with nearly zero prior knowledge. So what are you waiting for?
 
-<img src="have-a-good-day-cats.gif">
+![Have a nice day! :)](have-a-good-day-cat.gif)
