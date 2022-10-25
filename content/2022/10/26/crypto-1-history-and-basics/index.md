@@ -1,11 +1,14 @@
 ---
-layout: post
-title:  "Cryptography 1 - history and basics"
-date:   2022-mm-dd HH:MM:SS +0100
-categories: cryptography
+title: Cryptography 1 - History and Basics
+date: 2022-10-25
+categories:
+- cryptography
+- mathematics
+author:
+- fnord
 ---
 # Cryptography
-## Part I: history and basics
+## Part I: History and Basics
 Hi everyone, Fnord here.
 This post is the first in a small series on cryptography, written in collaboration with [CRTified](https://github.com/CRTified). For the first post, we'll mainly focus on the history of cryptography and set some basic ground rules. We'll also talk about what "crypto systems" are and take a look at a simple method of encrypting texts.
 
@@ -57,7 +60,7 @@ Oscar is our generic **o**pponent and, similar to Eve, tries to interfere with t
 We may at times need to introduce additional parties. For the sake of simplicity, all attackers will use names that start with the latter that suits their attack vector best (so a second eavesdropper might be called Eric and a second generic opponent might be called Olivia). All other actors will draw from the remainder of the alphabet.
 
 #### Notation
-When talking about cryptography, especially when doing to in theory, there is not really a way around using math one way or another. We will try to focus on "concept first". This means that we'll introduce math as necessary, explaining new symbols as they come into play instead of building a giant glossary in this post. 
+When talking about cryptography, especially when doing to in theory, there is not really a way around using math one way or another. We will try to focus on "concept first". This means that we'll introduce math as necessary, explaining new symbols as they come into play instead of building a giant glossary in this post.
 
 > Mathematical definitions will be put in quotes.
 
