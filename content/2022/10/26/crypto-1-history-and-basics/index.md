@@ -57,7 +57,7 @@ When talking about cryptography, especially when doing to in theory, there is no
 
 > Mathematical definitions will be put in quotes.
 
-\[Mathematical \hspace{1mm} notation \hspace{1mm} will \hspace{1mm} look \hspace{1mm} like \hspace{1mm} this\]
+$Mathematical \hspace{1mm} notation \hspace{1mm} will \hspace{1mm} look \hspace{1mm} like \hspace{1mm} this$
 
 Also, we'll sometimes use examples that provide a little more (mathematical) detail to illustrate our points. If we do, we'll follow these guidelines so you can follow along:
 * $\textsf{Cryptographic Information (plain/cipher texts, keys, ...) is written using this special font}$. This applies to entire sentences as well as single letters and words.
