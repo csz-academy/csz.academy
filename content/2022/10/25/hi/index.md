@@ -1,5 +1,5 @@
 ---
-title: Welcome to Hugo
+title: Hi!
 author: hl
 authors:
 - hl
