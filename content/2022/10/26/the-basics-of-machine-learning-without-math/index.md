@@ -1,8 +1,11 @@
 ---
-layout: post
-title:  "The Basics of Machine Learning without Math"
-date:   2022-01-07 19:58:49 +0100
-categories: machine learning
+title: The Basics of Machine Learning without Math
+author: pt
+date: 2022-10-26
+categories:
+- machine learning
+tags:
+- python
 ---
 
 ## How is a neuronal network structured
