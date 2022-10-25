@@ -1,24 +1,23 @@
 ---
-layout: post
-title:  "Using Apache Kafka in Spring Boot (The easy Way!)"
-date:   "2022-01-10"
+title: Using Apache Kafka in Spring Boot (The easy Way!)
+date: 2022-10-27
 tags: [ "spring", "spring boot", "java", "kafka", "apache kafka" ]
-authors: [ "hl" ]
+author: [ "hl" ]
 ---
 
 Recently I tried to integrate [Apache Kafka](https://kafka.apache.org/) into a Spring Boot application.
 However, nearly every tutorial and guide I found on the web felt like a cumbersome way in contrast
 to the usual magic in Spring Boot.
 
-After several hours of trial and error I have figured out how to leverage the Spring Boot auto 
-configuration and out-of-the-box deserializing in a type-safe manner. 
+After several hours of trial and error I have figured out how to leverage the Spring Boot auto
+configuration and out-of-the-box deserializing in a type-safe manner.
 
-We are going to build a testable skeleton with Kafka Listeners, try deserializing messages, accessing 
+We are going to build a testable skeleton with Kafka Listeners, try deserializing messages, accessing
 headers and I will show you some common pitfalls. The final code can be found in my [java-dojo repository on GitHub](https://github.com/tobi6112/java-dojo/tree/main/spring-boot-kafka-example).
 
 # Prerequisites
 
-We will use Java 17 with Spring Boot 2.6.2 as these are the latest versions at the time of writing with 
+We will use Java 17 with Spring Boot 2.6.2 as these are the latest versions at the time of writing with
 the following dependencies:
 ```xml
 <dependencies>
@@ -104,9 +103,9 @@ spring.kafka.bootstrap-servers=localhost:9092
 spring.kafka.consumer.group-id=group1
 ```
 
-Next up we will define the messages we are going to listen for. 
+Next up we will define the messages we are going to listen for.
 The first messages is going to be published into the `user-id` topic and will contain UUIDs as plain string value.
-The second message will be published into the `user` topic and will contain a user object as a JSON Object. In order to deserialize 
+The second message will be published into the `user` topic and will contain a user object as a JSON Object. In order to deserialize
 it into a Java object, we will define a Java record, which conformes to the JSON Schema.
 ```java
 public record User(
@@ -122,7 +121,7 @@ received message and put the message content into a Set.
 @Component
 public class KafkaListeners {
   private final static Logger log = LoggerFactory.getLogger(KafkaListeners.class);
-  
+
   public Set<String> userIds = new HashSet<>();
   public Set<User> users = new HashSet<>();
 
@@ -205,7 +204,7 @@ Running the tests will give you the following Output:
 ```
 Wow - one test is already passing and we didn't do anything - so it shouldn't be so hard to make the second one pass... Right?
 
-However, this will be our skeleton for the next steps. 
+However, this will be our skeleton for the next steps.
 
 # Leveraging Spring Boot Autoconfig
 
@@ -277,7 +276,7 @@ If you run the test case again, you will see it will succeed. Nice. That was kin
 ```
 Caused by: com.fasterxml.jackson.core.JsonParseException: Unexpected character ('b' (code 98)) in numeric value: Exponent indicator not followed by a digit
 ```
-Remember that we're publishing plain string values to the topic, and we are now trying to deserialize it with a JsonDeserializer which expects a JSON value. So we need to tell the kafka listener for the topic `user-id` to use a StringDeserializer. We can do this by two ways. Either we provide a new [KafkaListenerContainerFactory](https://docs.spring.io/spring-kafka/api/org/springframework/kafka/config/KafkaListenerContainerFactory.html) Bean and refernce its qualifier in the `@KafkaListener` annotation. 
+Remember that we're publishing plain string values to the topic, and we are now trying to deserialize it with a JsonDeserializer which expects a JSON value. So we need to tell the kafka listener for the topic `user-id` to use a StringDeserializer. We can do this by two ways. Either we provide a new [KafkaListenerContainerFactory](https://docs.spring.io/spring-kafka/api/org/springframework/kafka/config/KafkaListenerContainerFactory.html) Bean and refernce its qualifier in the `@KafkaListener` annotation.
 The over possiblity we have is directly setting these properties in the `@KafkaListener` annotation.
 
 ### Using the ConsumerFactory
@@ -318,7 +317,7 @@ public ConcurrentKafkaListenerContainerFactory<Object, Object> kafkaDefaultConsu
 
 And then configure the KafkaListener to use the provided ContainerFactory.
 ```java
-@KafkaListener(topics = "user-id", containerFactory = "stringContainerFactory") 
+@KafkaListener(topics = "user-id", containerFactory = "stringContainerFactory")
 public void userIdListener(ConsumerRecord<String, String> record) {
     log.info("Received a Message in user-id topic: {}", record);
     this.userIds.add(record.value());
@@ -329,18 +328,18 @@ At least now you should be questioning this approach, there must be a better way
 
 ### Using Properties in Annotation
 
-We will just add the property to the annotation. Then this consumer will use the StringDeserializer to deserialize the message content. 
+We will just add the property to the annotation. Then this consumer will use the StringDeserializer to deserialize the message content.
 ```java
 @KafkaListener(topics = "user-id", properties = {
     "spring.deserializer.value.delegate.class=org.apache.kafka.common.serialization.StringDeserializer"
-}) 
+})
 public void userIdListener(ConsumerRecord<String, String> record) {
     log.info("Received a Message in user-id topic: {}", record);
     this.userIds.add(record.value());
 }
 ```
 
-Well, know both tests are succeeding. 
+Well, know both tests are succeeding.
 
 ## The Smart Way
 
@@ -356,11 +355,11 @@ I hope you didn't quit after reading the previous paragraph. If you are familar 
 
 # Error Handling
 
-I won't deep-dive into this topic here, instead I want to encourage you to take a look at the excellent Blog Post by [Confluent](https://www.confluent.io/de-de/blog/spring-kafka-can-your-kafka-consumers-handle-a-poison-pill/) 
-which explains the difficulties of handling Exceptions within Kafka Consumers and also looking 
+I won't deep-dive into this topic here, instead I want to encourage you to take a look at the excellent Blog Post by [Confluent](https://www.confluent.io/de-de/blog/spring-kafka-can-your-kafka-consumers-handle-a-poison-pill/)
+which explains the difficulties of handling Exceptions within Kafka Consumers and also looking
 at the Sprinng Documentation [Using ErrorHandlingDeserializer](https://docs.spring.io/spring-kafka/reference/html/#error-handling-deserializer).
 
-However, the following configuration applies for this example project focussing on deserialization 
+However, the following configuration applies for this example project focussing on deserialization
 issues and no DLT's.
 ```properties
 spring.kafka.consumer.key-deserializer=org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
