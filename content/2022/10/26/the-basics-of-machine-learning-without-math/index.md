@@ -66,6 +66,7 @@ Now lets start learning. We guess some weights and start throwing inputs into th
 ## How can we use this Knowledge in Practice
 
 A good and easy way to start is to use pytorch: https://pytorch.org
+
 This library allows us to build and train a network with nearly zero prior knowledge. So what are you waiting for?
 
 ![Have a nice day! :)](have-a-good-day-cat.gif#center)
