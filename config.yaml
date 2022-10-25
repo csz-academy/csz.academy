@@ -1,0 +1,30 @@
+baseURL: "https://csz.academy"
+languageCode: "en-US"
+title: "csz.academy"
+theme: "PaperMod"
+
+enableRobotsTXT: true
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+taxonomies:
+  tag: "tags"
+  category: "categories"
+  author: "authors"
+
+menu:
+  main:
+    - identifier: categories
+      name: categories
+      url: /categories/
+      weight: 10
+    - identifier: tags
+      name: tags
+      url: /tags/
+      weight: 20
+    - identifier: authors
+      name: authors
+      url: /authors/
+      weight: 30
