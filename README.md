@@ -12,8 +12,21 @@ Two licenses apply:
   - Code which is part of the content if no other license is specified within the same post
 - [CC-BY-NC-4.0](./LICENSE.CC-BY-NC-4.0) applies to any non-code content if not specified otherwise.
 
-## How to create your author profile
+## Writing own Posts
 
+### Prerequisites
+You need to install [Hugo](https://gohugo.io).
+
+After installation:
+```sh
+git clone git@github.com:csz-academy/csz.academy.git
+cd csz.academy
+
+# start site builder with live-reload
+hugo serve
+```
+
+### Creating an Author Profile
 Create a file under the `content/authors` directory with your acronym as filename. Then add a YAML content with your personal information like this:
 ```yaml
 name: <name>
@@ -25,9 +38,8 @@ social:
 web: <your homepage>
 ```
 
-## Directory Structure
+### Writing a Post
 
-### Posts
 Every post is a single unit which contains all markup- and asset files.
 At a minimum you create the following structure
 ```
