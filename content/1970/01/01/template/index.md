@@ -3,14 +3,21 @@ title: Hello, World!
 author:
 - hl
 - dwl
-date: "1970-01-01T00:00:00Z"
+date: 1970-01-01
+categories:
+- cat-a
+- cat-b
+tags:
+- a
+- b
+- c
 draft: true
 ---
-
 Hello, World!
 
 This is an example page that won't be published. Its only purpose is testing layouts.
 
-Run Jekyll with `--drafts` switch to build it.
-
-[this is an asset](hello-world.txt)
+To see drafts, run hugo like this:
+```sh
+hugo serve --buildDrafts
+```
