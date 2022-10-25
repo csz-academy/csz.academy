@@ -1,7 +1,6 @@
 ---
 title: Hi!
-author: hl
-authors:
+author:
 - hl
 date: 2022-10-25
 categories:
