@@ -1,7 +1,19 @@
-{{ $author := index .Site.Data.authors (.Params.author | default "default") }}
-{{- if $author -}}
-    <div class="meta_item">
-        {{ partial "svg/author.svg" (dict "class" "meta_icon") -}}
-        <span class="meta_text">{{ $author.name }}</span>
-    </div>
+{{- if or .Params.author site.Params.author }}
+    {{- $author := (.Params.author | default site.Params.author) }}
+    {{- $author_type := (printf "%T" $author) }}
+    {{- if (or (eq $author_type "[]string") (eq $author_type "[]interface {}")) }}
+        <span>
+        by
+        {{- range $key, $authorKey := $author -}}
+            {{- $a := index site.Data.authors $authorKey -}}
+            {{- if ne $key 0 }}, {{ end }} <a href='/authors/{{ $authorKey | urlize }}'>{{- $a.name -}}</a>
+        {{- end -}}
+        </span>
+    {{- else -}}
+    {{- $a := index site.Data.authors $author -}}
+    <span>
+        by
+        <a href='/authors/{{ $author | urlize }}'>{{- $a.name -}}</a>
+    </span>
+    {{- end }}
 {{- end -}}
