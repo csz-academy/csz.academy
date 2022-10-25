@@ -14,7 +14,6 @@ For many people a neuronal network is magic. If you never learnt what happens be
 
 A neuronal Network, as the name already suggests, is a network of multiple neurons.
 
-
 {{<
   figure
   align=center
@@ -37,7 +36,7 @@ As you could see in the image above there are 3 types of neurons:
 - **Yellow**:
   The last type of neurons are the yellow one. They are at the end of the network. Their output is the output of the whole network.
 
-All 3 types of the network can be described through one model
+All 3 types of the network can be described through one model:
 
 {{< figure align=center src="layers.png" title="Depiction of multiple layers containing different neurons" >}}
 https://miro.medium.com/max/428/1*O7YSSqlOdQuNgMrH7J_3dg.png
