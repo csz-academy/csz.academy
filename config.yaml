@@ -1,0 +1,49 @@
+baseURL: "https://csz.academy"
+languageCode: "en-US"
+title: "csz.academy"
+description: >-
+  csz.academy - The online academy of eloquent tech professions
+
+theme: "PaperMod"
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+taxonomies:
+  tag: "tags"
+  category: "categories"
+  author: "authors"
+
+menu:
+  main:
+    - identifier: categories
+      name: categories
+      url: /categories/
+      weight: 10
+    - identifier: tags
+      name: tags
+      url: /tags/
+      weight: 20
+    - identifier: authors
+      name: authors
+      url: /authors/
+      weight: 30
+
+params:
+  displayFullLangName: true
+  showReadingTime: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowRssButtonInSectionTermList: true
+  ShowToc: true
+
+  homeInfoParams:
+    Title: "csz.academy"
+    Content: >
+      Welcome to csz.academy!
+      Occasionally, we'll post about random stuff that we encounter during building stuff. Sometimes, there will be even more in-depth posts.
