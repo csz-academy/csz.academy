@@ -26,7 +26,7 @@ A neuronal Network, as the name already suggests, is a network of multiple neuro
 
 You give a input into it and through the interaction of the different neurons the result is formed.
 
-## What is a Neuron
+## What is a Neuron?
 
 As you could see in the image above there are 3 types of neurons:
 
@@ -55,7 +55,7 @@ https://miro.medium.com/max/357/1*oePAhrm74RNnNEolprmTaQ.png
 The output of this function (in this case RELU) is the output of the neuron and therefore the input for the next column of neurons.
 If we have a description of the arrangement of the neurons and a list of all weights we can reproduce the network over and over with the same outputs for the same inputs. And these two informations are the core of a neuronal network. How the Neurons are arranged and what the weights are.
 
-## What is Backpropagation
+## What is Backpropagation?
 The structure of a network impacts its performance, but the best variable to shape it are the weights. If we get the right weights it should be perfect. Obviously getting good weights is hard. I know that I said this is without math, but we need a little bit. A neuronal network is like a function with millions of parameters(weights) which produces a deterministic result. We can imagine this like a 3D map.
 
 {{< figure align=center src="gradient-descent-local-minima.png" title="An example of a gradient descent" >}}
@@ -68,8 +68,10 @@ Now lets start learning. We guess some weights and start throwing inputs into th
 
 ## How can we use this Knowledge in Practice
 
-A good and easy way to start is to use pytorch: https://pytorch.org
+These libraries offer an easy way to start:
+- [pytorch](https://pytorch.org)
+- [scikit-learn](scikit-learn.org)
 
-This library allows us to build and train a network with nearly zero prior knowledge. So what are you waiting for?
+These libraries allow us to build and train a network with nearly zero prior knowledge. So what are you waiting for?
 
 ![Have a nice day! :)](have-a-good-day-cat.gif#center)
