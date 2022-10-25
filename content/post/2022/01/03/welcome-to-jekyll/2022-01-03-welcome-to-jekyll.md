@@ -1,7 +1,16 @@
 ---
-categories: jekyll update
-date: "2022-01-03T19:58:49Z"
-title: Welcome to Jekyll!
+title: Welcome to Hugo
+author: hl
+authors:
+- hl
+date: 2022-10-25
+categories:
+- cat-a
+- cat-b
+tags:
+- a
+- b
+- c
 ---
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 

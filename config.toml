@@ -2,3 +2,8 @@ baseURL = "https://csz.academy"
 languageCode = "en-US"
 title = "csz.academy"
 theme = "PaperMod"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  author = "authors"
