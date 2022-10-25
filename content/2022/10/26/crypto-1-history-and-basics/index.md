@@ -153,7 +153,7 @@ Don't worry, we're almost there. One final problem presents itself. Assume you r
 > The latin alphabet can be represented by the integer modulo $\mod{26}$
 > Any number within our modulo ring must be smaller than the modulo value given$^1$. E.g., $50 \mod{26} = 24$, because $50 - 26 = 24$.
 
-$^1$ <sub>Side note: a modulo _can_ still have negative numbers and that might be relevant later on. But in this example, assume a modulo that doesn't have them.</sub>
+$^1$ <font size="2">Side note: a modulo _can_ still have negative numbers and that might be relevant later on. But in this example, assume a modulo that doesn't have them.</font>
 
 Basically, imagine a modulo ring like a clock: once you've passed hour number 23 (or 11 in am/pm clocks), you go back to 0 (or 12). The latin alphabet has 26 letters, no more, no less. And therefore, if you need to go before $\textsf{A}$, you go back to $\textsf{Z}$ and continue your journey from there (and the other way around if you need to go beyond $\textsf{Z}$). So our $\textsf{-2}$ becomes...? You guessed it, $\textsf{Y}$. With this little trick, we can reconstruct the original plain text: $\textsf{CRYPTOGRAPHY}$.
 
