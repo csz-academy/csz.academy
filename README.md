@@ -1,19 +1,30 @@
-# csz.academy [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0.html) [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
+# csz.academy
 > Official CSZ Blog.
 
 This is the repository for [csz.academy](https://csz.academy).
 
 ## Licensing
+Three (yes, three) licenses apply:
 
-Two licenses apply:
+- [AGPL-3.0 or later](./LICENSE.AGPL-3.0-or-later) applies to code used to generate the blog.
+- [MIT](./LICENSE.MIT) applies to all code samples in blog posts that are publicly available at https://csz.academy (if not specified otherwise).
+- [CC-BY-NC-4.0](./LICENSE.CC-BY-NC-4.0) applies to any non-code content (if not specified otherwise).
 
-- [AGPL-3.0 or later](./LICENSE.AGPL-3.0-or-later) applies to
-  - Code used to generate the webpage
-  - Code which is part of the content if no other license is specified within the same post
-- [CC-BY-NC-4.0](./LICENSE.CC-BY-NC-4.0) applies to any non-code content if not specified otherwise.
+## Writing own Posts
 
-## How to create your author profile
+### Prerequisites
+You need to install [Hugo](https://gohugo.io).
 
+After installation:
+```sh
+git clone git@github.com:csz-academy/csz.academy.git
+cd csz.academy
+
+# start site builder with live-reload
+hugo serve
+```
+
+### Creating an Author Profile
 Create a file under the `content/authors` directory with your acronym as filename. Then add a YAML content with your personal information like this:
 ```yaml
 name: <name>
@@ -25,9 +36,8 @@ social:
 web: <your homepage>
 ```
 
-## Directory Structure
+### Writing a Post
 
-### Posts
 Every post is a single unit which contains all markup- and asset files.
 At a minimum you create the following structure
 ```
