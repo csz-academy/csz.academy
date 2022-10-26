@@ -28,7 +28,7 @@ menu:
       name: tags
       url: /tags/
       weight: 20
-    - identifier: authors
+    - identifier: author
       name: authors
       url: /authors/
       weight: 30
