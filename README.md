@@ -1,16 +1,14 @@
-# csz.academy [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0.html) [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
+# csz.academy
 > Official CSZ Blog.
 
 This is the repository for [csz.academy](https://csz.academy).
 
 ## Licensing
+Three (yes, three) licenses apply:
 
-Two licenses apply:
-
-- [AGPL-3.0 or later](./LICENSE.AGPL-3.0-or-later) applies to
-  - Code used to generate the webpage
-  - Code which is part of the content if no other license is specified within the same post
-- [CC-BY-NC-4.0](./LICENSE.CC-BY-NC-4.0) applies to any non-code content if not specified otherwise.
+- [AGPL-3.0 or later](./LICENSE.AGPL-3.0-or-later) applies to code used to generate the blog.
+- [MIT](./LICENSE.MIT) applies to all code samples in blog posts that are publicly available at https://csz.academy (if not specified otherwise).
+- [CC-BY-NC-4.0](./LICENSE.CC-BY-NC-4.0) applies to any non-code content (if not specified otherwise).
 
 ## Writing own Posts
 
