@@ -1,6 +1,6 @@
 ---
 title: Cryptography 1 - History and Basics
-date: 2022-10-25
+date: 2022-10-26
 categories:
 - cryptography
 - mathematics
